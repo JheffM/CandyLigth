@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nuevo Inventario</title>
+</head>
+<body>
+
+<h1>Nuevo Inventario</h1>
+
+<form action="/guardar-inventario" method="post">
+
+    <label>Producto ID:</label>
+    <input type="number" name="productoId">
+
+    <br><br>
+
+    <label>Stock:</label>
+    <input type="number" name="cantidadStock">
+
+    <br><br>
+
+    <label>Fecha:</label>
+    <input type="text" name="fechaActualizacion">
+
+    <br><br>
+
+    <button type="submit">
+        Guardar
+    </button>
+
+</form>
+
+</body>
+</html>

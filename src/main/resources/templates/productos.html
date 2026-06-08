@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Productos CandyLight</title>
+</head>
+
+<body>
+
+<h1>Catálogo de Velas 🕯️</h1>
+
+<table border="1">
+
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Aroma</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+    </tr>
+
+    <tr th:each="producto : ${productos}">
+
+        <td th:text="${producto.id}"></td>
+
+        <td th:text="${producto.nombre}"></td>
+
+        <td th:text="${producto.aroma}"></td>
+
+        <td th:text="${producto.precio}"></td>
+
+        <td>
+
+            <a th:href="@{/editar-producto/{id}(id=${producto.id})}">
+                Editar
+            </a>
+
+            |
+
+            <a th:href="@{/eliminar-producto/{id}(id=${producto.id})}">
+                Eliminar
+            </a>
+
+        </td>
+
+    </tr>
+
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Pedido</title>
+</head>
+
+<body>
+
+<h1>Registrar Pedido 📦</h1>
+
+<form action="/guardar-pedido" method="post">
+
+    <label>Cliente:</label>
+    <input type="text" name="cliente">
+    <br><br>
+
+    <label>Fecha:</label>
+    <input type="text" name="fecha">
+    <br><br>
+
+    <label>Total:</label>
+    <input type="number"
+           step="0.01"
+           name="total">
+    <br><br>
+
+    <label>Estado:</label>
+    <input type="text" name="estado">
+    <br><br>
+
+    <button type="submit">
+        Guardar Pedido
+    </button>
+
+</form>
+
+</body>
+</html>

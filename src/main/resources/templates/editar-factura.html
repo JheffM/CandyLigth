@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Factura</title>
+</head>
+<body>
+
+<h1>Editar Factura 🧾</h1>
+
+<form th:action="@{/guardar-factura}"
+      th:object="${factura}"
+      method="post">
+
+    <input type="hidden" th:field="*{id}">
+
+    <label>Pedido ID:</label>
+    <input type="number" th:field="*{pedidoId}">
+    <br><br>
+
+    <label>Fecha de Emisión:</label>
+    <input type="text" th:field="*{fechaEmision}">
+    <br><br>
+
+    <label>Total Final:</label>
+    <input type="number" step="0.01" th:field="*{totalFinal}">
+    <br><br>
+
+    <label>Método de Pago:</label>
+    <input type="text" th:field="*{metodoPago}">
+    <br><br>
+
+    <label>Estado de Pago:</label>
+    <input type="text" th:field="*{estadoPago}">
+    <br><br>
+
+    <button type="submit">
+        Actualizar Factura
+    </button>
+
+</form>
+
+<br>
+
+<a href="/facturas">
+    Volver a Facturas
+</a>
+
+</body>
+</html>

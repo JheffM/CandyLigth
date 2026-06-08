@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editar Inventario</title>
+</head>
+<body>
+
+<h1>Editar Inventario</h1>
+
+<form th:action="@{/guardar-inventario}"
+      th:object="${inventario}"
+      method="post">
+
+    <input type="hidden" th:field="*{id}">
+
+    <label>Producto ID:</label>
+    <input type="number" th:field="*{productoId}">
+
+    <br><br>
+
+    <label>Stock:</label>
+    <input type="number" th:field="*{cantidadStock}">
+
+    <br><br>
+
+    <label>Fecha:</label>
+    <input type="text" th:field="*{fechaActualizacion}">
+
+    <br><br>
+
+    <button type="submit">
+        Actualizar
+    </button>
+
+</form>
+
+</body>
+</html>

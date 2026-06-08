@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Pedido</title>
+</head>
+
+<body>
+
+<h1>Editar Pedido ✏️</h1>
+
+<form th:action="@{/guardar-pedido}"
+      th:object="${pedido}"
+      method="post">
+
+    <input type="hidden" th:field="*{id}">
+
+    <label>Cliente:</label>
+    <input type="text" th:field="*{cliente}">
+    <br><br>
+
+    <label>Fecha:</label>
+    <input type="text" th:field="*{fecha}">
+    <br><br>
+
+    <label>Total:</label>
+    <input type="number"
+           step="0.01"
+           th:field="*{total}">
+    <br><br>
+
+    <label>Estado:</label>
+    <input type="text" th:field="*{estado}">
+    <br><br>
+
+    <button type="submit">
+        Actualizar
+    </button>
+
+</form>
+
+</body>
+</html>

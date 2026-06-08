@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pedidos</title>
+</head>
+
+<body>
+
+<h1>Lista de Pedidos 📦</h1>
+
+<a href="/nuevo-pedido">
+    Nuevo Pedido
+</a>
+
+<br><br>
+
+<table border="1">
+
+    <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Fecha</th>
+        <th>Total</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+    </tr>
+
+    <tr th:each="pedido : ${pedidos}">
+
+        <td th:text="${pedido.id}"></td>
+
+        <td th:text="${pedido.cliente}"></td>
+
+        <td th:text="${pedido.fecha}"></td>
+
+        <td th:text="${pedido.total}"></td>
+
+        <td th:text="${pedido.estado}"></td>
+
+        <td>
+
+            <a th:href="@{/editar-pedido/{id}(id=${pedido.id})}">
+                Editar
+            </a>
+
+            |
+
+            <a th:href="@{/eliminar-pedido/{id}(id=${pedido.id})}">
+                Eliminar
+            </a>
+
+        </td>
+
+    </tr>
+
+</table>
+
+</body>
+</html>

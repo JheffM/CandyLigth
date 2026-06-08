@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Cliente</title>
+</head>
+
+<body>
+
+<h1>Editar Cliente ✏️</h1>
+
+<form th:action="@{/guardar-cliente}"
+      th:object="${cliente}"
+      method="post">
+
+    <input type="hidden" th:field="*{id}">
+
+    <label>Nombre:</label>
+    <input type="text" th:field="*{nombre}">
+    <br><br>
+
+    <label>Teléfono:</label>
+    <input type="text" th:field="*{telefono}">
+    <br><br>
+
+    <label>Correo:</label>
+    <input type="email" th:field="*{correo}">
+    <br><br>
+
+    <label>Dirección:</label>
+    <input type="text" th:field="*{direccion}">
+    <br><br>
+
+    <button type="submit">
+        Actualizar
+    </button>
+
+</form>
+
+</body>
+</html>
