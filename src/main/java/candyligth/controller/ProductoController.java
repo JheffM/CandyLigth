@@ -8,12 +8,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import candyligth.service.CarritoService;
 
 @Controller
 public class ProductoController {
 
     @Autowired
     private ProductoDao productoDAO;
+
+    @Autowired
+    private CarritoService carritoService;
 
     @GetMapping("/productos")
     public String listarProductos(Model model) {
@@ -66,6 +70,11 @@ public class ProductoController {
         model.addAttribute(
                 "productos",
                 productoDAO.listarProductos()
+        );
+
+        model.addAttribute(
+                "cantidadCarrito",
+                carritoService.cantidadProductos()
         );
 
         return "catalogo";

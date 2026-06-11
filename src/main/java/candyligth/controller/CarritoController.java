@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import candyligth.service.CarritoService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,18 +19,23 @@ public class CarritoController {
     @Autowired
     private ProductoDao productoDAO;
 
-    private List<CarritoItem> carrito = new ArrayList<>();
+    @Autowired
+    private CarritoService carritoService;
+
 
     @GetMapping("/carrito")
     public String verCarrito(Model model) {
 
         double total = 0;
 
-        for (CarritoItem item : carrito) {
+        for (CarritoItem item : carritoService.getCarrito()) {
             total += item.getSubtotal();
         }
 
-        model.addAttribute("items", carrito);
+        model.addAttribute(
+                "items",
+                carritoService.getCarrito()
+        );
         model.addAttribute("total", total);
 
         return "carrito";
@@ -45,7 +51,8 @@ public class CarritoController {
 
             boolean encontrado = false;
 
-            for (CarritoItem item : carrito) {
+            for (CarritoItem item :
+                    carritoService.getCarrito()) {
 
                 if (item.getProducto().getId() == id) {
 
@@ -60,12 +67,21 @@ public class CarritoController {
 
             if (!encontrado) {
 
-                carrito.add(
+                carritoService.getCarrito().add(
                         new CarritoItem(producto, 1)
                 );
             }
         }
 
         return "redirect:/catalogo";
+    }
+
+    @GetMapping("/eliminar-carrito/{id}")
+    public String eliminarCarrito(@PathVariable Integer id) {
+
+        carritoService.getCarrito().removeIf(item ->
+                item.getProducto().getId() == id);
+
+        return "redirect:/carrito";
     }
 }

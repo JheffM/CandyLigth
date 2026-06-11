@@ -27,8 +27,10 @@
 
         <tr>
             <th>Producto</th>
+            <th>Precio</th>
             <th>Cantidad</th>
             <th>Subtotal</th>
+            <th>Acciones</th>
         </tr>
 
         </thead>
@@ -40,10 +42,30 @@
             <td th:text="${item.producto.nombre}">
             </td>
 
+            <td>
+                S/
+                <span th:text="${item.producto.precio}">
+        </span>
+            </td>
+
             <td th:text="${item.cantidad}">
             </td>
 
-            <td th:text="${item.subtotal}">
+            <td>
+                S/
+                <span th:text="${item.subtotal}">
+        </span>
+            </td>
+
+            <td>
+
+                <a th:href="@{/eliminar-carrito/{id}(id=${item.producto.id})}"
+                   class="btn btn-danger btn-sm">
+
+                    Eliminar
+
+                </a>
+
             </td>
 
         </tr>
