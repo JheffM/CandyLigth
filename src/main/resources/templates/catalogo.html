@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Catálogo CandyLigth</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        🕯️ CandyLigth
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Inicio</a>
+        <a href="/catalogo">Catálogo</a>
+    </div>
+    <a href="/carrito">
+        🛒 Mi Pedido
+    </a>
+
+</nav>
+
+<section class="container mt-5">
+
+    <div class="text-center mb-5">
+
+        <h1>Nuestro Catálogo</h1>
+
+        <p>
+            Descubre nuestras velas artesanales
+        </p>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-3 mb-4"
+             th:each="producto : ${productos}">
+
+            <div class="card h-100">
+
+                <img src="https://picsum.photos/300/250"
+                     class="card-img-top">
+
+                <div class="card-body">
+
+                    <h5 th:text="${producto.nombre}">
+                    </h5>
+
+                    <p th:text="${producto.descripcion}">
+                    </p>
+
+                    <p>
+                        Aroma:
+                        <span th:text="${producto.aroma}">
+                        </span>
+                    </p>
+
+                    <h4 class="precio">
+
+                        S/
+                        <span th:text="${producto.precio}">
+                        </span>
+
+                    </h4>
+
+                    <a th:href="@{/agregar-carrito/{id}(id=${producto.id})}"
+                       class="btn btn-primary w-100 mt-2">
+
+                        Agregar al Pedido
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+
+</html>

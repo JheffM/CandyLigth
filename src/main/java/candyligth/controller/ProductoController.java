@@ -59,4 +59,15 @@ public class ProductoController {
 
         return "editar-producto";
     }
+
+    @GetMapping("/catalogo")
+    public String catalogo(Model model){
+
+        model.addAttribute(
+                "productos",
+                productoDAO.listarProductos()
+        );
+
+        return "catalogo";
+    }
 }
